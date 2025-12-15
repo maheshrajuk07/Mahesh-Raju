@@ -1,16 +1,17 @@
+
 # Text Embeddings Benchmark Report
 
-**Date:** 2025-12-15
-**Author:** Mahesh
+**Date:** 2025-12-15  
+**Author:** Mahesh  
 **Status:** ✅ Success
 
 ## 📋 Strategic Context
-Organizations often struggle to choose between expensive APIs and complex self-hosted models. This benchmark simulates a real-world production scenario to determine the optimal "Build vs. Buy" strategy, specifically focusing on the trade-off between **latency costs** and **retrieval accuracy**.
+Many organizations face difficulty when deciding between high-cost third‑party APIs and operationally demanding self‑hosted embedding models. This benchmark recreates a realistic production‑like setup to identify the most effective **“Build vs. Buy”** approach, with particular attention to the balance between **inference latency costs** and **retrieval performance**.
 
 ## 🚀 Executive Summary
-- **Fastest Model:** `sentence-transformers/all-MiniLM-L6-v2` at **41.05 ms**.
-- **Efficiency:** The Donut charts below highlight that **MiniLM** provides the largest "Efficiency Slice."
-- **Recommendation:** Use **MiniLM-L6-v2** for production workloads requiring speed.
+- **Lowest Latency Model:** `sentence-transformers/all-MiniLM-L6-v2` with an average response time of **41.05 ms**.
+- **Efficiency Insight:** The donut visualizations indicate that **MiniLM** occupies the largest share in overall efficiency.
+- **Deployment Guidance:** **MiniLM-L6-v2** is recommended for production systems where response speed is critical.
 
 ---
 
@@ -26,13 +27,13 @@ Organizations often struggle to choose between expensive APIs and complex self-h
 ### 2. Deep Dive Analysis (Distribution Charts)
 
 #### A. Efficiency Score (The "Winner" Chart)
-*This chart visualizes "Bang for Buck" (Speed/Performance). Larger slice = Better Model.*
+*This chart represents the performance-to-speed ratio of each model. A larger segment indicates superior efficiency.*
 ![Efficiency](chart_pie_efficiency.png)
 
 #### B. Resource Consumption
 | Processing Load Share | Cost Factor Share |
 |-----------------------|-------------------|
-| *Who is slowing us down?* | *Who costs the most?* |
+| *Which model introduces the most delay?* | *Which model contributes most to cost?* |
 | ![Pie Latency](chart_pie_latency.png) | ![Pie Cost](chart_pie_cost.png) |
 
 ---
@@ -51,22 +52,22 @@ Organizations often struggle to choose between expensive APIs and complex self-h
 
 | Requirement | Recommended Model | Reasoning |
 |-------------|-------------------|-----------|
-| **Real-time / Search** | **MiniLM-L6-v2** | Highest Efficiency Score. 10x faster than Base models. |
-| **Semantic Nuance** | **BGE-Base** | Better semantic understanding, but consumes 50%+ of the processing time load (see Pie Chart B). |
-| **Low Maintenance** | **OpenAI / API** | Zero Ops, though OpEx scales linearly. |
+| **Real-time / Search** | **MiniLM-L6-v2** | Delivers the best efficiency score and operates nearly ten times faster than larger base models. |
+| **Semantic Nuance** | **BGE-Base** | Offers stronger semantic depth, but accounts for more than half of the total processing load (refer Pie Chart B). |
+| **Low Maintenance** | **OpenAI / API** | Requires minimal operational effort, although operating expenses increase proportionally with usage. |
 
 ## 🛠 Methodology
-- **Visualization:** Generated using `matplotlib` and `seaborn` (Donut & Bar styles).
+- **Visualization:** Charts were produced using `matplotlib` and `seaborn`, employing both bar and donut chart styles.
 - **Metrics:**
-    - **Efficiency Score:** Calculated as `1000 / Latency`.
-    - **Load Share:** Proportional time taken by each model in a sequential run.
+    - **Efficiency Score:** Computed as `1000 / Latency`.
+    - **Load Share:** Measured as the relative execution time of each model during sequential inference.
 
 ## 🔁 Reproduction
-To reproduce these results on your local machine:
-1. Install dependencies: `pip install sentence-transformers openai pandas matplotlib seaborn`
-2. Run the orchestrator: `python run_benchmarks.py`
+To replicate this benchmark locally:
+1. Install the required packages: `pip install sentence-transformers openai pandas matplotlib seaborn`
+2. Execute the benchmark script: `python run_benchmarks.py`
 
 ---
 
 ## 👨‍💻 Authors Note
-This benchmark was executed by **Mahesh** to empirically validate the efficiency of local embedding models. The data confirms that for high-throughput RAG applications, the speed advantage of optimized local models (like MiniLM) often outweighs the theoretical accuracy gains of larger models.
+This benchmark was carried out by **Mahesh** to experimentally assess the performance efficiency of locally hosted text embedding models. The results demonstrate that for high‑throughput RAG systems, the latency benefits of optimized lightweight models such as MiniLM frequently outweigh the marginal accuracy advantages of larger alternatives.
