@@ -68,5 +68,5 @@ To reproduce these results on your local machine:
 
 ---
 
-## 👨‍💻 Author's Note
+## 👨‍💻 Authors Note
 This benchmark was executed by **Mahesh** to empirically validate the efficiency of local embedding models. The data confirms that for high-throughput RAG applications, the speed advantage of optimized local models (like MiniLM) often outweighs the theoretical accuracy gains of larger models.
